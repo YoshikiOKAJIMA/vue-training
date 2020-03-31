@@ -5,13 +5,16 @@
     <meta charset="UTF-8">
     <title>Document</title>
     <link href="style/stylesheet.css" rel="stylesheet" type="text/css" />
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js'></script>
+    <script src='https://unpkg.com/vue/dist/vue.js'></script>
+    <script src="js/script.js"></script>
 </head>
 
 <body>
     <div id="app">
         <div class="content-wrapper">
             <p id="title">=====Quiz Game=====</p>
-            <ul id="questions" v-for= "q in qList" v-if="qNumList[count]+1===q.id">
+            <ul id="questions" v-for="q in qList" v-if="qNumList[count]+1===q.id">
                 <li id="qSentence">
                     <p>{{q.question}}</p>
                 </li>
@@ -23,16 +26,14 @@
             </ul>
         </div>
         <div class=judge-wrapper>
-                    <p v-show="message">正誤：{{message}}</p>
-                    <button @click="goNext" v-if="message">{{nextBtn}}</button>
+            <p v-show="message">正誤：{{message}}</p>
+            <button @click="goNext" v-if="message">{{nextBtn}}</button>
         </div>
         <p> {{qNumList}} {{message}} {{count}} {{result}} </p>
         <div class="results" v-if="result">全問終了です。貴殿の正解数は{{countCorrect}}です。お疲れ様でした。</div>
     </div>
 
-    <script src='https://unpkg.com/vue/dist/vue.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
-    <script src="js/script.js"></script>
+
 
 </body>
 

@@ -46,9 +46,8 @@ new Vue({
         axios.get('data/quiz.json').then(function (response) {
             //取得完了したらqListリストに代入
             this.qList = response.data
-        }.bind(this)).catch(function (e) {
-            console.error(e)
         })
+
         //出題する問題を3つ、ランダムに決定
         for (var i = 0; i < this.qNumList.length; i++) {
             var a = Math.floor(Math.random() * this.qList.length)
@@ -63,6 +62,3 @@ new Vue({
     }
 
 })
-
-
-
