@@ -4,21 +4,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Document</title>
-    <link href="style/stylesheet.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.5/lodash.min.js"></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js'></script>
-    <script src='https://unpkg.com/vue/dist/vue.js'></script>
-    <script src="js/script.js"></script>
 </head>
 
 <body>
     <div id="app">
         <div class="content-wrapper">
-            <p id="title">=====Quiz Game=====</p>
+            <p id="title">====={{title}}=====</p>
+            <!--このv-forはコメントだらけを誘うので改善しよう-->
             <ul id="questions" v-for="q in qList" v-if="qNumList[count]+1===q.id">
                 <li id="qSentence">
                     <p>{{q.question}}</p>
                 </li>
-                <ul id="question" v-for="item in ">
+                <ul id="question">
                     <li v-for="o in q.option">
                         <button @click="judgeCorrect(o.correct)"> {{o.index}}. {{o.sentence}} </button>
                     </li>
@@ -29,12 +28,35 @@
             <p v-show="message">正誤：{{message}}</p>
             <button @click="goNext" v-if="message">{{nextBtn}}</button>
         </div>
-        <p> {{qNumList}} {{message}} {{count}} {{result}} </p>
         <div class="results" v-if="result">全問終了です。貴殿の正解数は{{countCorrect}}です。お疲れ様でした。</div>
     </div>
 
+    <script src='https://unpkg.com/vue/dist/vue.js'></script>
+    <script src="js/script.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
 
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-analytics.js"></script>
 
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyBnvp2xdZDcdN0RFEACXYskNS9bptEi1fo",
+            authDomain: "vue-training-5996a.firebaseapp.com",
+            databaseURL: "https://vue-training-5996a.firebaseio.com",
+            projectId: "vue-training-5996a",
+            storageBucket: "vue-training-5996a.appspot.com",
+            messagingSenderId: "724328068659",
+            appId: "1:724328068659:web:1296463563e48cc8e35546",
+            measurementId: "G-66TMH5P8VG"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        firebase.analytics();
+
+    </script>
 </body>
 
 </html>
